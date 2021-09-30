@@ -26,82 +26,10 @@
             <input id="taskInput" type="text" placeholder="¿Qué necesitas hacer?">
         </label>
         <ul id="taskList">
-            <li>
-                <div>
-                    <input type="checkbox">
-                    <span>Mi primera tarea</span>
-                </div>
-                <span class="material-icons btn-delete">delete_outline</span>
-            </li>
-            <li>
-                <div>
-                    <input type="checkbox">
-                    <span>Una tarea sin terminar</span>
-                </div>
-                <span class="material-icons btn-delete">delete_outline</span>
-            </li>
-            <li>
-                <div>
-                    <input checked type="checkbox">
-                    <span>Una tarea terminada</span>
-                </div>
-                <span class="material-icons btn-delete">delete_outline</span>
-            </li>
-            <li class="updating">
-                <div>
-                    <input type="checkbox">
-                    <span>Una tarea en modo edición</span>
-                </div>
-                <span class="material-icons btn-delete">delete_outline</span>
-                <input type="text" value="Una tarea en modo edición"><span class="material-icons">done</span>
-            </li>
-            <li>
-                <div>
-                    <input type="checkbox">
-                    <span>Una tarea para eliminar</span>
-                </div>
-                <span class="material-icons btn-delete">delete_outline</span>
-            </li>
-            <li>
-                <div>
-                    <input type="checkbox">
-                    <span>Una tarea con un texto muy largo: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
-                        aliquid asperiores consequuntur dolorem excepturi fugiat harum ipsa iure laboriosam libero
-                        minima neque porro possimus quam, quasi qui saepe velit veritatis."</span>
-                </div>
-                <span class="material-icons btn-delete">delete_outline</span>
-            </li>
-            <li>
-                <div>
-                    <input type="checkbox">
-                    <span>Tarea numero 7</span>
-                </div>
-                <span class="material-icons btn-delete">delete_outline</span>
-            </li>
-            <li>
-                <div>
-                    <input type="checkbox">
-                    <span>Tarea numero 8</span>
-                </div>
-                <span class="material-icons btn-delete">delete_outline</span>
-            </li>
-            <li>
-                <div>
-                    <input type="checkbox">
-                    <span>Tarea numero 9</span>
-                </div>
-                <span class="material-icons btn-delete">delete_outline</span>
-            </li>
-            <li>
-                <div>
-                    <input type="checkbox">
-                    <span>Tarea numero 10</span>
-                </div>
-                <span class="material-icons btn-delete">delete_outline</span>
-            </li>
+            
         </ul>
         <div class="info">
-            <p>Quedan 9 tareas</p>
+            <p id="taskLeft">Quedan  tareas</p>
             <div>
                 <button class="button" disabled>Todas</button>
                 <button class="button">Pendientes</button>
