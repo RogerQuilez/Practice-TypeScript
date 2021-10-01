@@ -11,7 +11,7 @@ class List {
 }
 
 /* VARIABLES */
-const taskList = document.querySelector('#taskList');
+const taskList: any = document.querySelector('#taskList');
 const taskLeft = document.querySelector('#taskLeft');
 const input: HTMLInputElement = document.querySelector('#taskInput');
 const arrayLi: Array<List> = [];
@@ -32,26 +32,16 @@ for (let btn of buttons) {
 function displayTasks() {
 
     for (let btn of buttons) btn.removeAttribute('disabled');
-
-    this.disabled = true;
-    document.querySelector('ul').remove();
-    let ul;
+    const lists: any = document.querySelectorAll('li');
 
     if (this.textContent == 'Todas') {
-        ul = printAllTasks();
+        printAllTasks(lists);
     } else if (this.textContent == 'Pendientes') {
         //TODO printPendientes();
     } else {
-        ul = printDoneTasks();
+        printDoneTasks(lists);
     }
 
-    
-    const main: any = document.querySelector('main');
-    const taskInfo: any = document.querySelector('.info');
-    main.insertBefore(ul, taskInfo);
-    
-    let deleteButtons: any = document.querySelectorAll('.btn-delete');
-    addDeleteButtonFunction(deleteButtons);
 }
 
 /* ADDING TASK WITH ENTER ON INPUT */
@@ -96,38 +86,26 @@ function printTask(newLi: HTMLElement, newList: List) {
 }
 
 /* Function to print Tasks done */
-function printDoneTasks() {
-    const ul: HTMLElement = document.createElement('ul');
-    for (let list of arrayLi) {
-        const newLi: HTMLElement = document.createElement('li');
-        if (list.done) {
-            newLi.innerHTML = `<div>
-                                    <input type="checkbox" checked>
-                                    <span>${list.name}</span>
-                                </div>
-                                <span class="material-icons btn-delete">delete_outline</span>`;
-                            }
-        ul.append(newLi);
+function printDoneTasks(lists: any) {
+    
+    for (let li of lists) {
+        let textLi = li.firstElementChild.lastElementChild.textContent;
+        console.log(li);
+        for (let list of arrayLi) {
+            if (list.name === textLi && !list.done) {
+                li.style.display = 'none';
+                break;
+            }
+        }
     }
-
-    return ul;
 }
 
 /* Function to print All Tasks */
-function printAllTasks() {
-    const ul: HTMLElement = document.createElement('ul');
-    for (let list of arrayLi) {
-        const newLi: HTMLElement = document.createElement('li');
-        newLi.innerHTML = `<div>
-                                <input type="checkbox" ${list.done ? 'checked' : ''}>
-                                <span>${list.name}</span>
-                            </div>
-                                <span class="material-icons btn-delete">delete_outline</span>`;
+function printAllTasks(lists: any) {
 
-        ul.append(newLi);
+    for (let li of lists) {
+        li.style.display = 'flex';
     }
-
-    return ul;
 }
 
 
