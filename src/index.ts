@@ -11,14 +11,14 @@ class List {
 }
 
 /* VARIABLES */
-const taskList: any = document.querySelector('#taskList');
-const taskLeft = document.querySelector('#taskLeft');
+const taskList: HTMLUListElement = document.querySelector('#taskList');
+const taskLeft: HTMLParagraphElement = document.querySelector('#taskLeft');
 const input: HTMLInputElement = document.querySelector('#taskInput');
 const arrayLi: Array<List> = [];
-const deleteButton: any = document.querySelectorAll('.btn-delete');
-const buttonAll: any = document.querySelector('#btn-all');
-const buttonPending: any = document.querySelector('#btn-pending');
-const buttonDone: any = document.querySelector('#btn-done');
+const deleteButton: NodeListOf<Element> = document.querySelectorAll('.btn-delete');
+const buttonAll: HTMLButtonElement = document.querySelector('#btn-all');
+const buttonPending: HTMLButtonElement = document.querySelector('#btn-pending');
+const buttonDone: HTMLButtonElement = document.querySelector('#btn-done');
 const buttons: any = document.querySelectorAll('.btn-display');
 
 /* EVENTS */
@@ -82,17 +82,19 @@ function printTask(newLi: HTMLElement, newList: List) {
 
     newLi.addEventListener('click', () => {
         (newList.done ? newList.done = false : newList.done = true)
+        saveToLocalStorage();
     })
 }
 
 /* Function to print Tasks done */
 function printDoneTasks(lists: any) {
-    
+    const currentArrayLi = getLocalStorage();
     for (let li of lists) {
         let textLi = li.firstElementChild.lastElementChild.textContent;
-        console.log(li);
-        for (let list of arrayLi) {
-            if (list.name === textLi && !list.done) {
+
+        for (let list of currentArrayLi) {
+            if (list.name == textLi && !list.done) {
+                console.log(textLi + list.name);
                 li.style.display = 'none';
                 break;
             }
@@ -102,7 +104,6 @@ function printDoneTasks(lists: any) {
 
 /* Function to print All Tasks */
 function printAllTasks(lists: any) {
-
     for (let li of lists) {
         li.style.display = 'flex';
     }
@@ -136,6 +137,10 @@ function addDeleteButtonFunction(deleteButtons: Array<HTMLElement>) {
 /* Function to save array into LocalStorage */
 function saveToLocalStorage() {
     localStorage.setItem('tasks', JSON.stringify(arrayLi));
+}
+
+function getLocalStorage() {
+    return JSON.parse(localStorage.getItem('tasks'));
 }
 
 
